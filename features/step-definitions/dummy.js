@@ -9,6 +9,7 @@ defineSupportCode(function({ Given, When, Then }) {
     const getStartedButton = $('.buttonWrapper > a');
     getStartedButton.click();
     browser.pause(1500);
+    browser.saveScreenshot('./features/errorShots/screenshot.png');
   });
   Then('I expect that the title of the page is correct', function() {
     var title = browser.getTitle();
