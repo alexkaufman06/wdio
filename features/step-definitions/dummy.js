@@ -10,7 +10,7 @@ defineSupportCode(function({ Given, When, Then }) {
     getStartedButton.click();
     browser.pause(1500);
   });
-  Then('I expect that the title of the page to contain the text', function() {
+  Then('I expect that the title of the page is correct', function() {
     var title = browser.getTitle();
     assert.equal(title, "Getting Started · WebdriverIO");
   });
