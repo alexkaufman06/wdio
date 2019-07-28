@@ -13,11 +13,6 @@ addons:
 before_install:
   - google-chrome-stable --headless --disable-gpu
 before_script:
-  # - wget http://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-  # - sudo mkdir /home/travis/virtualenv/python2.7.12/bin
-  # - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
-  # - export CHROME_BIN=chromium-browser
-  # 
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
   - sudo apt-get update
