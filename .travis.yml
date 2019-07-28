@@ -1,7 +1,13 @@
 sudo: required
+dist: trusty 
 language: node_js
 node_js:
   - "10"
+env:
+  global:
+    - CXX=g++-4.8
+    - DISPLAY=:99.0
+    - CHROME_BIN=/usr/bin/google-chrome
 addons:
   chrome: stable
 before_install:
@@ -11,7 +17,16 @@ before_script:
   # - sudo mkdir /home/travis/virtualenv/python2.7.12/bin
   # - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
   # - export CHROME_BIN=chromium-browser
-  - npm run build
+  # 
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+  - sudo apt-get update
+  - sudo apt-get install -y libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
+  - npm install --dev
+  - npm run run & # to run my web server in the background
+  - sleep 5 # give web server some time to start
 cache:
   directories:
     - node_modules
